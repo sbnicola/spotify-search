@@ -1,24 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
+
+import albumsList from './containers/albumsList';
+import artistBrowser from './containers/artistBrowser';
+import GetToken from './containers/GetToken';
+import singleList from './containers/singleList'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={GetToken} />
+          <Route exact path="/search" component={artistBrowser} />
+          <Route exact path="/albums" component={albumsList} />
+          <Route exact path="/singles" component={singleList} />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
